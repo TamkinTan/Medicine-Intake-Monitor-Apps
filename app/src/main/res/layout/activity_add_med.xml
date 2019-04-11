@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:orientation="horizontal"
+    tools:context=".AddMedActivity">
+
+    <EditText
+        android:id="@+id/medNameTextView"
+        android:layout_width="251dp"
+        android:layout_height="wrap_content"
+        android:hint="Medicine Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/quantityEditText"
+        android:layout_width="247dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medNameTextView"
+        android:hint="Amount of Medicines"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_alignParentRight="true"
+        android:text="Add Medicine"
+        android:onClick="addNotification"/>
+
+    <Button
+        android:id="@+id/addTimeButton"
+        android:layout_width="204dp"
+        android:layout_height="72dp"
+        android:layout_below="@id/medNameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:onClick="addTime"
+        android:text="Add Time" />
+
+    <Spinner
+        android:id="@+id/alarmIntervalSpinner"
+        android:layout_width="400dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/medNameTextView"
+        android:layout_marginTop="186dp"></Spinner>
+
+    <EditText
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alarmIntervalSpinner"
+        android:hint="Add More Info" />
+    <ListView
+
+        android:id="@+id/timeListView"
+        android:layout_below="@id/details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
+
+</RelativeLayout>

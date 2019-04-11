@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".MyMailActivity">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cName"
+        android:hint="Customer Name"
+        />
+    <EditText
+        android:id="@+id/medNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cName"
+        android:hint="Medicine Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/quantityEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medNameTextView"
+        android:hint="Amount of Medicines"
+        android:inputType="number" />
+    <EditText
+        android:id="@+id/pAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantityEditText"
+        android:hint="Customer Adrress"/>
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pAddress"
+        android:hint="Mail Address of Pharmacy"
+        android:inputType="textEmailAddress"
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="121dp"
+        android:layout_height="106dp"
+        android:layout_below="@id/mail"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="SEND" />
+
+</RelativeLayout>

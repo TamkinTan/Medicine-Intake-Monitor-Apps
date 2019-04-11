@@ -1,0 +1,101 @@
+package com.example.medicpro;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+
+        import android.content.Context;
+        import android.content.Intent;
+        import android.view.View;
+        import android.widget.Toast;
+
+        import com.example.medicpro.Medicine;
+        import com.example.medicpro.MedicineList;
+
+        import java.io.File;
+        import java.io.FileInputStream;
+        import java.io.FileNotFoundException;
+        import java.io.FileOutputStream;
+        import java.io.IOException;
+        import java.io.ObjectInputStream;
+        import java.io.ObjectOutputStream;
+        import java.io.StreamCorruptedException;
+        import java.util.ArrayList;
+        import java.util.Calendar;
+        import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    public List<Medicine> medicineList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        medicineList = new ArrayList<>();
+        MedicineList.getInstance();
+        medicineList = null;
+        medicineList = read(this);
+        if (medicineList != null) {
+            MedicineList.setMedicineList(medicineList);
+            //Toast.makeText(this, "List is Loaded", Toast.LENGTH_SHORT).show();
+        } else {
+            //Toast.makeText(this, " No Medicine Found", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(this, "Take Your Medicine On Time :)", Toast.LENGTH_SHORT).show();
+    }
+
+    public void changeActivityAddMed(View view) {
+        Intent intent = new Intent(this, AddMedActivity.class);
+        startActivity(intent);
+    }
+
+    /*
+    public void writeArray() {
+        File f = new File(getFilesDir(), "medicine_list.srl");
+        try {
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream objectwrite = new ObjectOutputStream(fos);
+            objectwrite.writeObject(medicineList);
+            fos.close();
+
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } */
+
+    public ArrayList<Medicine> read(Context context) {
+
+        ObjectInputStream input = null;
+        ArrayList<Medicine> ReturnClass = null;
+        File f = new File(getFilesDir(), "medicine_list.srl");
+        try {
+
+            input = new ObjectInputStream(new FileInputStream(f));
+            ReturnClass = (ArrayList<Medicine>) input.readObject();
+            input.close();
+
+        } catch (StreamCorruptedException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return ReturnClass;
+    }
+
+    public void changeToMyMedsActivity(View view) {
+        Intent intent = new Intent(this, MyMedsActivity.class);
+        startActivity(intent);
+    }
+
+}
